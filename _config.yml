@@ -3,4 +3,4 @@ plugins:
 - jekyll-remote-theme # add this line to the plugins list if you already have one
 include:
 - "assets/css/custom.css"
-site-css: "assets/css/custom-styles.css"
+site-css: "assets/css/custom.css"

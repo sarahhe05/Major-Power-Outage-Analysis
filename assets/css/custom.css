@@ -1,11 +1,15 @@
 /* Custom styles */
 
-nav {
+.navbar {
     background-color: #57788b;
 }
 
 body {
     background-color: #001b38;
+}
+
+a {
+    color: #f1ece3;
 }
 
 h1 {
@@ -25,9 +29,13 @@ h4 {
 }
 
 p {
-    color: #f1ece3;
+    color: #f1ece3 !important;
 }
 
 footer {
     background-color: #57788b;
+}
+
+footer a {
+    color: #f1ece3;
 }

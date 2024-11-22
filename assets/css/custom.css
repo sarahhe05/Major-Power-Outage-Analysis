@@ -1,24 +1,33 @@
 /* Custom styles */
+
+nav {
+    background-color: #57788b;
+}
+
 body {
-    background-color: #192033;
+    background-color: #001b38;
 }
 
 h1 {
-    color: #c1c6cc;
+    color: #f1ece3;
 }
 
 h2 {
-    color: #c1c6cc;
+    color: #f1ece3;
 }
 
 h3 {
-    color: #c1c6cc;
+    color: #f1ece3;
 }
 
 h4 {
-    color: #c1c6cc;
+    color: #f1ece3;
 }
 
 p {
-    color: #c1c6cc;
+    color: #f1ece3;
+}
+
+footer {
+    background-color: #57788b;
 }

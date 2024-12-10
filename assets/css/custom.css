@@ -33,6 +33,17 @@ p {
     color: #f8f8f8 !important;
 }
 
+ul li {
+    color: #f8f8f8;
+}
+
+code {
+    color: #001b38; /* Replace with your desired color */
+    background-color: #f8f8f8; /* Optional: Change background for inline code */
+    padding: 2px 4px;
+    border-radius: 4px;
+  }
+
 table {
     overflow-x: auto;
     display: block;
@@ -45,4 +56,11 @@ footer {
 
 footer a {
     color: #f8f8f8;
+}
+
+p.text-muted {
+    color: #f8f8f8 !important;
+}
+p.navbar-custom .navbar-brand, .navbar-custom .navbar-nav .nav-link{
+    color: #f8f8f8 !important;
 }

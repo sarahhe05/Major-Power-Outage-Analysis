@@ -138,6 +138,8 @@ We will now address the nature of missingness for each of these columns individu
 
 In summary, while most of the missing data in the selected columns can be explained by either time, category, or region, further testing will be performed on **CUSTOMERS.AFFECTED** to determine its missingness mechanism. The majority of the columns exhibit patterns that suggest the missingness is **MAR** rather than **NMAR**.
 
+### Missingness Dependency
+
 
 
 

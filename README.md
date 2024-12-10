@@ -100,7 +100,7 @@ The Number of Customers Affected by Cause Category histogram provides insights i
   frameborder="0"
 ></iframe>
 
-### Aggregates
+### Interesting Aggregates
 #### Mean Outage Duration by Region and Cause Category
 The pivot table below shows the mean outage duration for each climate region and cause category in the dataset. It is created by grouping the data based on the climate region and cause of the outage, with the values representing the average outage duration in minutes for each combination.
 
@@ -146,7 +146,7 @@ In this analysis, we further investigate the missingness in the `CUSTOMERS.AFFEC
 - **Null Hypothesis (H₀)**: The missingness of `CUSTOMERS.AFFECTED` is not dependent on the values of `CLIMATE.CATEGORY`. The distribution of `CLIMATE.CATEGORY` remains unchanged regardless of whether `CUSTOMERS.AFFECTED` values are missing or not.
 - **Alternative Hypothesis (H₁)**: The missingness of `CUSTOMERS.AFFECTED` is dependent on the values of `CLIMATE.CATEGORY`. The distribution of `CLIMATE.CATEGORY` differs between rows where `CUSTOMERS.AFFECTED` is missing and rows where it is not missing.
 
-Given that `CLIMATE.CATEGORY` is a categorical variable, we apply the **Total Variation Distance** (TVD) to test the hypothesis. TVD quantifies the difference between two probability distributions, making it suitable for comparing categorical distributions in the context of missingness.
+Given that `CLIMATE.CATEGORY` is a categorical variable, we apply the **Total Variation Distance** to test the hypothesis. TVD quantifies the difference between two probability distributions, making it suitable for comparing categorical distributions in the context of missingness.
 
 <iframe
   src="assets/climate_category_customer_missing_fig.html"
@@ -178,11 +178,11 @@ The permutation test yields a **p-value of 0.0**. Given that the p-value is sign
 Through the permutation tests, we found that the missingness of `CUSTOMERS.AFFECTED` is not dependent on `CLIMATE.CATEGORY`, as evidenced by the p-value of 0.604. However, the missingness is dependent on `U.S._STATE`, with a p-value of 0.0 indicating a significant relationship. This suggests that the missing values in `CUSTOMERS.AFFECTED` may depend on the state in the U.S. where the event occurred.
 
 ## Hypothesis Testing
-We aim to test if there is a significant difference in the duration of severe weather outages between the North and South regions. The hypotheses are defined as follows:
+We categorize the `CLIMATE.REGION` column into two groups: North (East North Central, Northwest, Northeast) and South (South, Southeast, Southwest). We aim to test if there is a significant difference in the duration of severe weather outages between the North and South regions.
+
+The hypotheses are defined as follows:
 - **Null Hypothesis (H₀)**: On average, the duration of severe weather outages in the North is the same as in the South.
 - **Alternative Hypothesis (H₁)**: On average, the duration of severe weather outages in the North is greater than in the South.
-
-The `CLIMATE.REGION` column is categorized into two groups: North (East North Central, Northwest, Northeast) and South (South, Southeast, Southwest).
 
 We will use the **difference of means** as the test statistic, where:
 \
@@ -315,13 +315,11 @@ We run a permutation test to assess the fairness of our model on different `CLIM
 
 **Test Statistic and Evaluation Metric**: Absolute difference in model accuracy between the two climate categories
 
-**Null Hypothesis (H₀)**
-There is no significant difference in model performance between 'normal' and 'cold' climate groups.
+**Hypotheses**
+- **Null Hypothesis (H₀)**: There is no significant difference in model performance between 'normal' and 'cold' climate groups.
+- **Alternative Hypothesis (H₁)**: There is a statistically significant difference in model performance between 'normal' and 'cold' climate groups, which would indicate potential model unfairness.
 
-**Alternative Hypothesis (H₁)**
-There is a statistically significant difference in model performance between 'normal' and 'cold' climate groups, which would indicate potential model unfairness.
-
-**Significance Level**: α = 0.05 (standard statistical significance threshold)
+**Significance Level**: 0.05
 
 <iframe
   src="assets/fairness_fig.html"

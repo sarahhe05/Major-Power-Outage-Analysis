@@ -61,6 +61,7 @@ After these cleaning steps, the dataset now contains consistent datetime columns
 
 Below is a preview of the cleaned and filtered outage dataset after selecting only the most relevant columns and performing necessary data cleaning steps. 
 
+<div style="overflow-x: auto; width: 100%;">
 |    |   YEAR |   MONTH | U.S._STATE   | CLIMATE.REGION     | CLIMATE.CATEGORY   | CAUSE.CATEGORY     | CAUSE.CATEGORY.DETAIL   |   OUTAGE.DURATION |   CUSTOMERS.AFFECTED |   TOTAL.CUSTOMERS |   TOTAL.PRICE |   TOTAL.SALES |   TOTAL.REALGSP |   PC.REALGSP.STATE |   POPDEN_URBAN |   POPULATION | OUTAGE.START        | OUTAGE.RESTORATION   | Severe   |
 |---:|-------:|--------:|:-------------|:-------------------|:-------------------|:-------------------|:------------------------|------------------:|---------------------:|------------------:|--------------:|--------------:|----------------:|-------------------:|---------------:|-------------:|:--------------------|:---------------------|:---------|
 |  1 |   2011 |       7 | Minnesota    | East North Central | normal             | severe weather     | nan                     |              3060 |                70000 |       2.5957e+06  |          9.28 |       6562520 |          274182 |              51268 |           2279 |  5.34812e+06 | 2011-07-01 17:00:00 | 2011-07-03 20:00:00  | True     |
@@ -68,6 +69,7 @@ Below is a preview of the cleaned and filtered outage dataset after selecting on
 |  3 |   2010 |      10 | Minnesota    | East North Central | cold               | severe weather     | heavy wind              |              3000 |                70000 |       2.5869e+06  |          8.15 |       5222116 |          267895 |              50447 |           2279 |  5.3109e+06  | 2010-10-26 20:00:00 | 2010-10-28 22:00:00  | True     |
 |  4 |   2012 |       6 | Minnesota    | East North Central | normal             | severe weather     | thunderstorm            |              2550 |                68200 |       2.60681e+06 |          9.19 |       5787064 |          277627 |              51598 |           2279 |  5.38044e+06 | 2012-06-19 04:30:00 | 2012-06-20 23:00:00  | True     |
 |  5 |   2015 |       7 | Minnesota    | East North Central | warm               | severe weather     | nan                     |              1740 |               250000 |       2.67353e+06 |         10.43 |       5970339 |          292023 |              54431 |           2279 |  5.48959e+06 | 2015-07-18 02:00:00 | 2015-07-19 07:00:00  | True     |
+</div>
 
 ### Univariate Analysis
 In this analysis, we focus exclusively on severe power outages, defined as outages lasting longer than 24 hours and affecting over 50,000 people
@@ -103,7 +105,7 @@ The Number of Customers Affected by Cause Category histogram provides insights i
 ### Aggregates
 #### Mean Outage Duration by Region and Cause Category
 The pivot table below shows the mean outage duration for each climate region and cause category in the dataset. It is created by grouping the data based on the climate region and cause of the outage, with the values representing the average outage duration in minutes for each combination.
-{% raw %}
+
 | CLIMATE.REGION     |   equipment failure |   intentional attack |   severe weather |   system operability disruption |
 |:-------------------|--------------------:|---------------------:|-----------------:|--------------------------------:|
 | Central            |                   0 |                    0 |          5306.14 |                         3137    |
@@ -114,9 +116,31 @@ The pivot table below shows the mean outage duration for each climate region and
 | Southeast          |                   0 |                    0 |          4486.18 |                            0    |
 | Southwest          |                   0 |                    0 |          2544.2  |                            0    |
 | West               |                1914 |                 3100 |          6635.85 |                            0    |
-{% endraw %}
+
 
 ## Assessment of Missingness
+### NMAR Analysis
+In the subset of columns we selected, the following columns exhibit missing values: `CAUSE.CATEGORY.DETAIL`, `CUSTOMERS.AFFECTED`, `TOTAL.PRICE`, `TOTAL.SALES`, `CLIMATE.REGION`.
+
+We will now address the nature of missingness for each of these columns individually:
+
+- `CAUSE.CATEGORY.DETAIL`
+   Upon review, it is clear that the missing values in this column are **NOT NMAR**. The missingness is attributable to the hierarchical structure of the `CAUSE.CATEGORY`. Some cause categories simply do not require or have a detailed breakdown, thus explaining the absence of data in these cases.
+
+- `TOTAL.PRICE` and `TOTAL.SALES`
+   A deeper inspection reveals that the missing values for both `TOTAL.PRICE` and `TOTAL.SALES` are concentrated within the month of July 2016. This temporal pattern suggests that the missingness is not due to random factors, but rather to a specific event or condition in that particular period. Given the consistency of the missing values within this timeframe, the data appears to follow a time-based pattern and **NOT NMAR**.
+
+- `CLIMATE.REGION`
+   A closer examination of the missing data for `CLIMATE.REGION` shows that all missing values are concentrated in entries related to Hawaii. This geographic pattern indicates that the missingness is location-specific, rather than being related to the value of the variable itself. As a result, the missingness in this column is more likely **NOT NMAR** and can be attributed to the specific region in question.
+
+- `CUSTOMERS.AFFECTED`
+   Initially, the missingness in the `CUSTOMERS.AFFECTED` column appeared to be **NMAR**, as there were no apparent patterns or relationships with other variables that could explain the missing data. However, further investigation through hypothesis testing will be conducted in the next phase. The goal is to determine whether the missingness is indeed dependent on the variable's values, thereby confirming whether it is **NMAR** or if it can be explained by other observed factors, making it **MAR**.
+
+In summary, while most of the missing data in the selected columns can be explained by either time, category, or region, further testing will be performed on **CUSTOMERS.AFFECTED** to determine its missingness mechanism. The majority of the columns exhibit patterns that suggest the missingness is **MAR** rather than **NMAR**.
+
+
+
+
 ## Hypothesis Testing
 ## Framing a Prediction Problem
 ## Baseline Model

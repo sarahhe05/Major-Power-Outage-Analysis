@@ -6,7 +6,7 @@ By: Sarah He, Hao Zhang
 ## Introduction
 Power outages are significant events that disrupt lives, economies, and critical infrastructure. Understanding the characteristics of major power outages can help communities, policymakers, and utility companies better prepare for and mitigate their impact.
 
-This project focuses on the question: **What are the characteristics of major power outages with higher severity, and what factors may indicate that a power outage would be severe?** A power outage is considered severe if it lasts over 24 hours (1440 minutes) and affects more than 50,000 people.
+This project focuses on the question: **What are the characteristics of major power outages with higher severity, and what factors may indicate that a power outage would be severe?** For our purposes, a power outage is considered severe if it lasts over 24 hours (1440 minutes) and affects more than 50,000 people.
 
 The dataset used for this analysis was obtained from Purdue University's LASCI research data repository and can be accessed [here](https://engineering.purdue.edu/LASCI/research-data/outages). The original dataset contains **1,534 rows** and **56 columns**. However, this analysis focuses on the following relevant columns:
 
@@ -308,3 +308,29 @@ Compared to the baseline model, the final model shows significant improvement ac
 The combination of feature engineering and hyperparameter tuning has led to an improvement in the model’s performance over the baseline, as it better accounts for the regional and infrastructural factors influencing power outage severity. Together, these changes resulted in a more accurate and reliable model for predicting severe power outages, enabling decision-makers to take timely action to mitigate the impact of these events.
 
 ## Fairness Analysis
+
+We run a permutation test to assess the fairness of our model on different `CLIMATE.CATEGORY`
+- **Group X**: Rows with `CLIMATE.CATEGORY` = "cold"
+- **Group Y**: Rows with `CLIMATE.CATEGORY` = "normal"
+
+**Test Statistic and Evaluation Metric**: Absolute difference in model accuracy between the two climate categories
+
+**Null Hypothesis (H₀)**
+There is no significant difference in model performance between 'normal' and 'cold' climate groups.
+
+**Alternative Hypothesis (H₁)**
+There is a statistically significant difference in model performance between 'normal' and 'cold' climate groups, which would indicate potential model unfairness.
+
+**Significance Level**: α = 0.05 (standard statistical significance threshold)
+
+<iframe
+  src="assets/fairness_fig.html"
+  width="700"
+  height="450"
+  frameborder="0"
+></iframe>
+
+The permutation test revealed an observed accuracy difference of 0.016 between "cold" and "normal" climate categories, with a p-value of 0.575. This high p-value suggests the performance variation is not statistically significant and likely attributable to random chance. We therefore fail to reject the null hypothesis, concluding that the model demonstrates consistent performance across climate categories, with no substantial evidence of unfairness or meaningful bias in its predictive accuracy.
+
+## Conclusion
+In this project, we aimed to explore the characteristics of major power outages with higher severity and identify factors that could indicate whether a power outage would be severe. Through steps of Exploratory Data Analysis, feature engineering, model training, and hypothesis testing, we developed a logistic regression model that provides reasonable predictions without significant bias between climate categories. Environmental and infrastructural factors, such as climate conditions, infrastructure type, and historical outage data, were found to correlate with outage severity. By identifying the key factors influencing outage severity, we gained valuable insights that could inform future preparedness and response strategies, helping to mitigate the impact of severe power outages.

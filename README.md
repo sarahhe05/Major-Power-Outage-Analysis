@@ -190,7 +190,6 @@ Test Statistic = Average outage duration in the North - Average outage duration 
 
 The significance level is set to the standard value of 0.05.
 
-### Results
 <iframe
   src="assets/north_south_fig.html"
   width="700"
@@ -200,11 +199,45 @@ The significance level is set to the standard value of 0.05.
 
 Over 10,000 simulations, the resulting p-value is **0.29**. Given that the p-value exceeds the significance level of 0.05, we **fail to reject the null hypothesis**. We do not have sufficient statistical evidence to claim that the average duration of severe weather outages differs between the North and South regions. The data suggests that the outage durations are similar on average across both regions.
 
-
-
-
-
 ## Framing a Prediction Problem
+The goal of our prediction model is to determine whether a power outage will be classified as "Severe." A power outage is defined as severe if it lasts for over 24 hours and affects more than 50,000 people. This is a **binary classification problem**, where the model's output is either "Severe" or "Not Severe." Given the binary nature of the problem, we will use **logistic regression** as the model, which is a suitable choice for predicting binary outcomes.
+
+### Evaluation Metrics
+To assess the model's performance, we will use three key evaluation metrics: **accuracy**, **precision**, and **recall**. 
+
+- **Accuracy** measures the overall percentage of correct predictions. It is useful for providing a general sense of how well the model is performing.
+- **Precision** focuses on the proportion of positive predictions (Severe outages) that were correctly identified. This is important because we want to minimize false positives, which are instances where the model incorrectly predicts a severe outage.
+- **Recall** measures the proportion of actual severe outages that were correctly predicted. This is critical as we want to ensure that most severe outages are identified by the model, reducing the number of false negatives.
+
+By using these three metrics together, we can gain a balanced understanding of the model's performance, particularly since there might be an imbalance between severe and non-severe outages.
+
+### Features Used for Prediction
+
+Specifically, the features that will be used to predict whether an outage is severe are:
+- `YEAR`
+- `MONTH`
+- `U.S._STATE`
+- `CLIMATE.CATEGORY`
+- `CAUSE.CATEGORY`
+- `TOTAL.CUSTOMERS`
+- `POPDEN_URBAN`
+- `POPULATION`
+- `TOTAL.REALGSP`
+- `PC.REALGSP.STATE`
+- `OUTAGE.START`
+- `CLIMATE.REGION`
+- `TOTAL.PRICE`
+- `TOTAL.SALES`
+
+These features were chosen because they are available at the start of the outage and provide key context for predicting severity. For instance, `CLIMATE.CATEGORY` and `CAUSE.CATEGORY` help identify factors like storms or equipment failure, while `TOTAL.CUSTOMERS` and `POPULATION` indicate the potential scale and impact. The **time of prediction** will be at the start of the outage. By using these features with logistic regression, the model aims to predict whether an outage will be severe, aiding timely decision-making to mitigate its impact.
+
+
+
+
+
+
+
+
 ## Baseline Model
 ## Final Model
 ## Fairness Analysis

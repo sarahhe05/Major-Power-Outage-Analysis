@@ -140,6 +140,47 @@ In summary, while most of the missing data in the selected columns can be explai
 
 ### Missingness Dependency
 
+In this analysis, we further investigate the missingness in the `CUSTOMERS.AFFECTED` column by performing permutation tests to assess the potential dependencies between the missingness of this column and other variables in the dataset. Specifically, we focus on two columns: `CLIMATE.CATEGORY` and `U.S._STATE`. We conduct the tests using the standard significance level of 0.05.
+
+#### `CLIMATE.CATEGORY` on the Missingness of `CUSTOMERS.AFFECTED`
+
+**Hypotheses**:
+- **Null Hypothesis (H₀)**: The missingness of `CUSTOMERS.AFFECTED` is not dependent on the values of `CLIMATE.CATEGORY`. The distribution of `CLIMATE.CATEGORY` remains unchanged regardless of whether `CUSTOMERS.AFFECTED` values are missing or not.
+- **Alternative Hypothesis (H₁)**: The missingness of `CUSTOMERS.AFFECTED` is dependent on the values of `CLIMATE.CATEGORY`. The distribution of `CLIMATE.CATEGORY` differs between rows where `CUSTOMERS.AFFECTED` is missing and rows where it is not missing.
+
+Given that `CLIMATE.CATEGORY` is a categorical variable, we apply the **Total Variation Distance** (TVD) to test the hypothesis. TVD quantifies the difference between two probability distributions, making it suitable for comparing categorical distributions in the context of missingness.
+
+<iframe
+  src="assets/climate_category_customer_missing_fig.html"
+  width="700"
+  height="450"
+  frameborder="0"
+></iframe>
+
+**Result**:
+After conducting the permutation test, we obtain a **p-value of 0.604**. This result leads us to **fail to reject the null hypothesis**. Therefore, we conclude that there is no statistically significant difference in the distribution of `CLIMATE.CATEGORY` based on whether `CUSTOMERS.AFFECTED` is missing or not. Hence, the missingness of `CUSTOMERS.AFFECTED` does not appear to be dependent on the values of `CLIMATE.CATEGORY`.
+
+#### `U.S._STATE` on the Missingness of `CUSTOMERS.AFFECTED`
+
+**Hypotheses**:
+- **Null Hypothesis (H₀)**: The missingness of `CUSTOMERS.AFFECTED` is not dependent on the values of `U.S._STATE`. The distribution of `U.S._STATE` remains the same regardless of whether `CUSTOMERS.AFFECTED` values are missing or not.
+- **Alternative Hypothesis (H₁)**: The missingness of `CUSTOMERS.AFFECTED` is dependent on the values of `U.S._STATE`. The distribution of `U.S._STATE` differs between rows where `CUSTOMERS.AFFECTED` is missing and rows where it is not missing.
+
+As `U.S._STATE` is also a categorical variable, we again apply **Total Variation Distance** to test the hypothesis and compare the distributions of `U.S._STATE` for missing and non-missing `CUSTOMERS.AFFECTED` values.
+
+<iframe
+  src="assets/us_state_customer_missing_fig.html"
+  width="700"
+  height="450"
+  frameborder="0"
+></iframe>
+
+**Result**:
+The permutation test yields a **p-value of 0.0**. Given that the p-value is significantly below the 0.05 significance threshold, we **reject the null hypothesis** in favor of the alternative hypothesis. This suggests that the distribution of `U.S._STATE` is significantly different between rows with missing `CUSTOMERS.AFFECTED` values and those without, indicating a dependency between the missingness of `CUSTOMERS.AFFECTED` and the values of `U.S._STATE`. Consequently, we classify the missingness of `CUSTOMERS.AFFECTED` as **MAR (Missing at Random)**.
+
+#### Conclusion
+Through the permutation tests, we found that the missingness of `CUSTOMERS.AFFECTED` is not dependent on `CLIMATE.CATEGORY`, as evidenced by the p-value of 0.604. However, the missingness is dependent on `U.S._STATE`, with a p-value of 0.0 indicating a significant relationship. This suggests that the missing values in `CUSTOMERS.AFFECTED` may depend on the state in the U.S. where the event occurred.
+---
 
 
 

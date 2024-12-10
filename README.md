@@ -124,16 +124,16 @@ In the subset of columns we selected, the following columns exhibit missing valu
 We will now address the nature of missingness for each of these columns individually:
 
 - `CAUSE.CATEGORY.DETAIL`
-   Upon review, it is clear that the missing values in this column are **NOT NMAR**. The missingness is attributable to the hierarchical structure of the `CAUSE.CATEGORY`. Some cause categories simply do not require or have a detailed breakdown, thus explaining the absence of data in these cases.
+  Upon review, it is clear that the missing values in this column are **NOT NMAR**. The missingness is attributable to the hierarchical structure of the `CAUSE.CATEGORY`. Some cause categories simply do not require or have a detailed breakdown, thus explaining the absence of data in these cases.
 
 - `TOTAL.PRICE` and `TOTAL.SALES`
-   A deeper inspection reveals that the missing values for both `TOTAL.PRICE` and `TOTAL.SALES` are concentrated within the month of July 2016. This temporal pattern suggests that the missingness is not due to random factors, but rather to a specific event or condition in that particular period. Given the consistency of the missing values within this timeframe, the data appears to follow a time-based pattern and **NOT NMAR**.
+  A deeper inspection reveals that the missing values for both `TOTAL.PRICE` and `TOTAL.SALES` are concentrated within the month of July 2016. This temporal pattern suggests that the missingness is not due to random factors, but rather to a specific event or condition in that particular period. Given the consistency of the missing values within this timeframe, the data appears to follow a time-based pattern and **NOT NMAR**.
 
 - `CLIMATE.REGION`
-   A closer examination of the missing data for `CLIMATE.REGION` shows that all missing values are concentrated in entries related to Hawaii. This geographic pattern indicates that the missingness is location-specific, rather than being related to the value of the variable itself. As a result, the missingness in this column is more likely **NOT NMAR** and can be attributed to the specific region in question.
+  A closer examination of the missing data for `CLIMATE.REGION` shows that all missing values are concentrated in entries related to Hawaii. This geographic pattern indicates that the missingness is location-specific, rather than being related to the value of the variable itself. As a result, the missingness in this column is more likely **NOT NMAR** and can be attributed to the specific region in question.
 
 - `CUSTOMERS.AFFECTED`
-   Initially, the missingness in the `CUSTOMERS.AFFECTED` column appeared to be **NMAR**, as there were no apparent patterns or relationships with other variables that could explain the missing data. However, further investigation through hypothesis testing will be conducted in the next phase. The goal is to determine whether the missingness is indeed dependent on the variable's values, thereby confirming whether it is **NMAR** or if it can be explained by other observed factors, making it **MAR**.
+  Initially, the missingness in the `CUSTOMERS.AFFECTED` column appeared to be **NMAR**, as there were no apparent patterns or relationships with other variables that could explain the missing data. However, further investigation through hypothesis testing will be conducted in the next phase. The goal is to determine whether the missingness is indeed dependent on the variable's values, thereby confirming whether it is **NMAR** or if it can be explained by other observed factors, making it **MAR**.
 
 In summary, while most of the missing data in the selected columns can be explained by either time, category, or region, further testing will be performed on **CUSTOMERS.AFFECTED** to determine its missingness mechanism. The majority of the columns exhibit patterns that suggest the missingness is **MAR** rather than **NMAR**.
 
@@ -181,7 +181,7 @@ Through the permutation tests, we found that the missingness of `CUSTOMERS.AFFEC
 ## Hypothesis Testing
 We categorize the `CLIMATE.REGION` column into two groups: North (East North Central, Northwest, Northeast) and South (South, Southeast, Southwest). We aim to test if there is a significant difference in the duration of severe weather outages between the North and South regions.
 
-The hypotheses are defined as follows:
+**Hypotheses**
 - **Null Hypothesis (H₀)**: On average, the duration of severe weather outages in the North is the same as in the South.
 - **Alternative Hypothesis (H₁)**: On average, the duration of severe weather outages in the North is greater than in the South.
 
@@ -205,7 +205,6 @@ The goal of our prediction model is to determine whether a power outage will be 
 
 ### Evaluation Metrics
 To assess the model's performance, we will use three key evaluation metrics: **accuracy**, **precision**, and **recall**. 
-
 - **Accuracy** measures the overall percentage of correct predictions. It is useful for providing a general sense of how well the model is performing.
 - **Precision** focuses on the proportion of positive predictions (Severe outages) that were correctly identified. This is important because we want to minimize false positives, which are instances where the model incorrectly predicts a severe outage.
 - **Recall** measures the proportion of actual severe outages that were correctly predicted. This is critical as we want to ensure that most severe outages are identified by the model, reducing the number of false negatives.
@@ -296,15 +295,11 @@ To further enhance performance, we optimized the model’s decision threshold. I
 ### Performance Improvement
 Compared to the baseline model, the final model shows significant improvement across all key metrics.
 
-**Baseline Model Performance**
-- Testing Accuracy: 0.69
-- Precision: 0.50
-- Recall: 0.07
-
-**Final Model Performance**
-- Accuracy: 0.8527
-- Precision: 0.7640
-- Recall: 0.7556
+| **Metric**            | **Baseline Model** | **Final Model**   |
+|-----------------------|--------------------|-------------------|
+| **Accuracy**          | 0.69               | 0.8527            |
+| **Precision**         | 0.50               | 0.7640            |
+| **Recall**            | 0.07               | 0.7556            |
 
 The combination of feature engineering and hyperparameter tuning has led to an improvement in the model’s performance over the baseline, as it better accounts for the regional and infrastructural factors influencing power outage severity. Together, these changes resulted in a more accurate and reliable model for predicting severe power outages, enabling decision-makers to take timely action to mitigate the impact of these events.
 

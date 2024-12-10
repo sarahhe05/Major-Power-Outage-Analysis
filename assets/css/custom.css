@@ -33,6 +33,12 @@ p {
     color: #f8f8f8 !important;
 }
 
+table {
+    overflow-x: auto;
+    display: block;
+    white-space: nowrap;
+}
+
 footer {
     background-color: #57788b;
 }

@@ -4,6 +4,10 @@
     background-color: #57788b;
 }
 
+header {
+    background-color: #f3de89;
+}
+
 body {
     background-color: #001b38;
 }
@@ -76,14 +80,6 @@ nav a {
     color: #f8f8f8;
 }
 
-a.navbar-custom{
-    color: #f8f8f8 !important;
-}
-
-a.navbar-brand{
-    color: #f8f8f8 !important;
-}
-
-a:hover {
+nav a:hover {
     color: #f3de89;
 }

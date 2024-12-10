@@ -59,23 +59,35 @@ After these cleaning steps, the dataset now contains consistent datetime columns
 
 
 ### Univariate Analysis
+In this analysis, we focus exclusively on severe power outages, defined as outages lasting longer than 24 hours and affecting over 50,000 people
 
+#### Distribution of Severe Outage Durations
+The Outage Duration Distribution histogram highlights the distribution of severe power outages by their duration. The majority of severe outages last under 5,000 minutes (approximately 3.5 days). However, in an extreme case, one outage lasts over 34,000 minutes (nearly 24 days).
 <iframe
   src="assets/duration_distribution_fig.html"
-  width="800"
-  height="600"
+  width="1000"
+  height="750"
   frameborder="0"
 ></iframe>
 
+#### Distribution of Severe Outages by Region
+The Severe Outages by Region bar chart displays the distribution of severe power outages across various climate regions, ordered from the highest to the lowest number of occurrences. The data reveals that the Northeast experiences the most severe outages, while the Southwest has the fewest.
 <iframe
   src="assets/severe_region_fig.html"
-  width="800"
-  height="600"
+  width="1000"
+  height="750"
   frameborder="0"
 ></iframe>
 
-
-
+### Bivariate Analysis
+#### Number of Customer by Cause Category
+The Number of Customers Affected by Cause Category histogram provides insights into how different causes of power outages impact the number of customers. Some causes affect significantly larger portions of the population than others. For instance, natural disasters like hurricanes and storms are associated with more widespread disruptions, leading to a higher number of affected customers, while technical issues tend to affect fewer people.
+<iframe
+  src="assets/customer_cause_count_fig.html"
+  width="1000"
+  height="750"
+  frameborder="0"
+></iframe>
 
 
 

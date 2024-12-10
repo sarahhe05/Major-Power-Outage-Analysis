@@ -60,6 +60,7 @@ table {
     overflow-x: auto;
     display: block;
     white-space: nowrap;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 footer {

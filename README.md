@@ -35,8 +35,6 @@ The dataset used for this analysis was obtained from Purdue University's LASCI r
 
 These columns are critical for analyzing the patterns and factors associated with severe power outages. This analysis aims to provide actionable insights that can help stakeholders better prepare for and respond to such events.
 
----
-
 ## Data Cleaning and Exploratory Data Analysis
 ### Data Cleaning
 The following data cleaning steps were performed to prepare the dataset for analysis. These steps addressed missing values, date and time formatting issues, and redundant columns, ensuring that the data was consistent and usable for further analysis.
@@ -117,7 +115,7 @@ The pivot table below shows the mean outage duration for each climate region and
 | Southwest          |                   0 |                    0 |          2544.2  |                            0    |
 | West               |                1914 |                 3100 |          6635.85 |                            0    |
 
----
+
 ## Assessment of Missingness
 ### NMAR Analysis
 In the subset of columns we selected, the following columns exhibit missing values: `CAUSE.CATEGORY.DETAIL`, `CUSTOMERS.AFFECTED`, `TOTAL.PRICE`, `TOTAL.SALES`, `CLIMATE.REGION`.
@@ -144,7 +142,7 @@ In this analysis, we further investigate the missingness in the `CUSTOMERS.AFFEC
 
 #### `CLIMATE.CATEGORY` on the Missingness of `CUSTOMERS.AFFECTED`
 
-**Hypotheses**:
+**Hypotheses**
 - **Null Hypothesis (H₀)**: The missingness of `CUSTOMERS.AFFECTED` is not dependent on the values of `CLIMATE.CATEGORY`. The distribution of `CLIMATE.CATEGORY` remains unchanged regardless of whether `CUSTOMERS.AFFECTED` values are missing or not.
 - **Alternative Hypothesis (H₁)**: The missingness of `CUSTOMERS.AFFECTED` is dependent on the values of `CLIMATE.CATEGORY`. The distribution of `CLIMATE.CATEGORY` differs between rows where `CUSTOMERS.AFFECTED` is missing and rows where it is not missing.
 
@@ -157,12 +155,11 @@ Given that `CLIMATE.CATEGORY` is a categorical variable, we apply the **Total Va
   frameborder="0"
 ></iframe>
 
-**Result**:
 After conducting the permutation test, we obtain a **p-value of 0.604**. This result leads us to **fail to reject the null hypothesis**. Therefore, we conclude that there is no statistically significant difference in the distribution of `CLIMATE.CATEGORY` based on whether `CUSTOMERS.AFFECTED` is missing or not. Hence, the missingness of `CUSTOMERS.AFFECTED` does not appear to be dependent on the values of `CLIMATE.CATEGORY`.
 
 #### `U.S._STATE` on the Missingness of `CUSTOMERS.AFFECTED`
 
-**Hypotheses**:
+**Hypotheses**
 - **Null Hypothesis (H₀)**: The missingness of `CUSTOMERS.AFFECTED` is not dependent on the values of `U.S._STATE`. The distribution of `U.S._STATE` remains the same regardless of whether `CUSTOMERS.AFFECTED` values are missing or not.
 - **Alternative Hypothesis (H₁)**: The missingness of `CUSTOMERS.AFFECTED` is dependent on the values of `U.S._STATE`. The distribution of `U.S._STATE` differs between rows where `CUSTOMERS.AFFECTED` is missing and rows where it is not missing.
 
@@ -175,16 +172,38 @@ As `U.S._STATE` is also a categorical variable, we again apply **Total Variation
   frameborder="0"
 ></iframe>
 
-**Result**:
 The permutation test yields a **p-value of 0.0**. Given that the p-value is significantly below the 0.05 significance threshold, we **reject the null hypothesis** in favor of the alternative hypothesis. This suggests that the distribution of `U.S._STATE` is significantly different between rows with missing `CUSTOMERS.AFFECTED` values and those without, indicating a dependency between the missingness of `CUSTOMERS.AFFECTED` and the values of `U.S._STATE`. Consequently, we classify the missingness of `CUSTOMERS.AFFECTED` as **MAR (Missing at Random)**.
 
 #### Conclusion
 Through the permutation tests, we found that the missingness of `CUSTOMERS.AFFECTED` is not dependent on `CLIMATE.CATEGORY`, as evidenced by the p-value of 0.604. However, the missingness is dependent on `U.S._STATE`, with a p-value of 0.0 indicating a significant relationship. This suggests that the missing values in `CUSTOMERS.AFFECTED` may depend on the state in the U.S. where the event occurred.
----
-
-
 
 ## Hypothesis Testing
+We aim to test if there is a significant difference in the duration of severe weather outages between the North and South regions. The hypotheses are defined as follows:
+- **Null Hypothesis (H₀)**: On average, the duration of severe weather outages in the North is the same as in the South.
+- **Alternative Hypothesis (H₁)**: On average, the duration of severe weather outages in the North is greater than in the South.
+
+The `CLIMATE.REGION` column is categorized into two groups: North (East North Central, Northwest, Northeast) and South (South, Southeast, Southwest).
+
+We will use the **difference of means** as the test statistic, where:
+\
+Test Statistic = Average outage duration in the North - Average outage duration in the South
+
+The significance level is set to the standard value of 0.05.
+
+### Results
+<iframe
+  src="assets/north_south_fig.html"
+  width="700"
+  height="450"
+  frameborder="0"
+></iframe>
+
+Over 10,000 simulations, the resulting p-value is **0.29**. Given that the p-value exceeds the significance level of 0.05, we **fail to reject the null hypothesis**. We do not have sufficient statistical evidence to claim that the average duration of severe weather outages differs between the North and South regions. The data suggests that the outage durations are similar on average across both regions.
+
+
+
+
+
 ## Framing a Prediction Problem
 ## Baseline Model
 ## Final Model

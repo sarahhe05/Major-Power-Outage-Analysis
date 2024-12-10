@@ -235,6 +235,8 @@ These features were chosen because they are available at the start of the outage
 Our baseline model aims to predict the severity of power outages using the selected features from the dataset. The model incorporates a mix of categorical and numerical features to capture diverse information about the outages. Below is the breakdown of feature types used:
 
 **Categorical (Nominal) Features**  
+- `YEAR` 
+- `MONTH` 
 - `U.S._STATE`  
 - `CLIMATE.CATEGORY`  
 - `CAUSE.CATEGORY`  
@@ -259,12 +261,50 @@ This feature was processed to extract a meaningful component, hour of day, which
 ### Model Performance
 The baseline model was evaluated using logistic regression, and its performance was assessed using a train-test split to ensure that results reflect the model's ability to generalize to unseen data. The metrics used to evaluate performance were **accuracy**, **precision**, and **recall**, which help measure overall correctness and the ability to identify severe outages effectively.
 
-- **Accuracy:** 0.70  
-- **Precision:** 0.52  
-- **Recall:** 0.08  
+- **Accuracy:** 0.69
+- **Precision:** 0.50
+- **Recall:** 0.07
 
 Although the accuracy seems acceptable, the low precision and recall indicate that the model struggles to identify severe outages effectively. This suggests that the baseline model is insufficient for practical use in its current form. However, these results provide a starting point for improvement, and we aim to enhance performance through better feature engineering and hyperparameter tuning.
 
-
 ## Final Model
+
+### Feature Engineering
+The existing numerical features were standardized. Standardization is a crucial preprocessing step because it ensures that the features are on the same scale, preventing any one feature from dominating the model due to its larger scale. 
+
+### Feature Addition: Demand Pressure (Customer-to-Population Ratio)
+We added a new feature to capture the pressure on the power infrastructure by highlighting areas with a higher customer demand relative to their population size. A higher ratio indicates a region where power infrastructure may be under more strain, which could lead to more severe outages.
+
+This feature calculates the ratio of customers to the population size as: 
+\
+`demand_pressure` = `TOTAL.CUSTOMERS` / `POPULATION`
+
+### Hyperparameter Tuning
+To fine-tune the model, we used **Grid Search Cross-Validation (CV)** to systematically evaluate combinations of hyperparameters and identify the best configuration.
+
+After performing Grid Search CV, the following hyperparameters produced the best performance for the logistic regression model:
+- **C**: 10 (controls regularization strength)
+- **class_weight**: 'balanced' (addresses class imbalance by assigning inverse proportional weights to the classes)
+- **max_iter**: 500 (ensures convergence with sufficient iterations)
+- **penalty**: 'l2' (applies L2 regularization to reduce overfitting)
+- **solver**: 'saga' (efficient solver for large datasets with L2 penalty)
+
+### Threshold Adjustment
+To further enhance performance, we optimized the model’s decision threshold. Instead of using the default threshold of 0.5, we adjusted it to find a value that balanced **precision** and **recall** effectively. This adjustment was made using the precision-recall curve, ensuring that the model could achieve a better trade-off between identifying severe outages and minimizing false positives.
+
+### Performance Improvement
+Compared to the baseline model, the final model shows significant improvement across all key metrics.
+
+**Baseline Model Performance**
+  - Accuracy: 0.70
+  - Precision: 0.52
+  - Recall: 0.08
+
+**Final Model Performance**
+  - Accuracy: 0.8527
+  - Precision: 0.7640
+  - Recall: 0.7556
+
+The combination of feature engineering and hyperparameter tuning has led to an improvement in the model’s performance over the baseline, as it better accounts for the regional and infrastructural factors influencing power outage severity. Together, these changes resulted in a more accurate and reliable model for predicting severe power outages, enabling decision-makers to take timely action to mitigate the impact of these events.
+
 ## Fairness Analysis

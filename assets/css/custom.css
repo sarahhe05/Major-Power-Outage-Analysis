@@ -31,6 +31,7 @@ h4 {
 
 p {
     color: #f8f8f8 !important;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 ul li {
@@ -42,6 +43,7 @@ code {
     background-color: #f8f8f8;
     padding: 2px 4px;
     border-radius: 4px;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   }
 
 table {

@@ -1,4 +1,4 @@
-# Major Power Outage Risks Analysis
+# Major Power Outage Analysis
 This is a project for DSC 80 at UCSD.
 
 By: Sarah He, Hao Zhang
@@ -296,14 +296,14 @@ To further enhance performance, we optimized the model’s decision threshold. I
 Compared to the baseline model, the final model shows significant improvement across all key metrics.
 
 **Baseline Model Performance**
-  - Accuracy: 0.70
-  - Precision: 0.52
-  - Recall: 0.08
+- Testing Accuracy: 0.69
+- Precision: 0.50
+- Recall: 0.07
 
 **Final Model Performance**
-  - Accuracy: 0.8527
-  - Precision: 0.7640
-  - Recall: 0.7556
+- Accuracy: 0.8527
+- Precision: 0.7640
+- Recall: 0.7556
 
 The combination of feature engineering and hyperparameter tuning has led to an improvement in the model’s performance over the baseline, as it better accounts for the regional and infrastructural factors influencing power outage severity. Together, these changes resulted in a more accurate and reliable model for predicting severe power outages, enabling decision-makers to take timely action to mitigate the impact of these events.
 

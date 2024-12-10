@@ -231,13 +231,40 @@ Specifically, the features that will be used to predict whether an outage is sev
 
 These features were chosen because they are available at the start of the outage and provide key context for predicting severity. For instance, `CLIMATE.CATEGORY` and `CAUSE.CATEGORY` help identify factors like storms or equipment failure, while `TOTAL.CUSTOMERS` and `POPULATION` indicate the potential scale and impact. The **time of prediction** will be at the start of the outage. By using these features with logistic regression, the model aims to predict whether an outage will be severe, aiding timely decision-making to mitigate its impact.
 
-
-
-
-
-
-
-
 ## Baseline Model
+Our baseline model aims to predict the severity of power outages using the selected features from the dataset. The model incorporates a mix of categorical and numerical features to capture diverse information about the outages. Below is the breakdown of feature types used:
+
+**Categorical (Nominal) Features**  
+- `U.S._STATE`  
+- `CLIMATE.CATEGORY`  
+- `CAUSE.CATEGORY`  
+- `CLIMATE.REGION`  
+
+These features were encoded using one-hot encoding to transform them into a format suitable for the logistic regression model.
+
+**Temporal Feature**  
+- `OUTAGE.START`  
+
+This feature was processed to extract a meaningful component, hour of day, which might correlate with outage severity.
+
+**Numerical Features**  
+- `TOTAL.CUSTOMERS`  
+- `POPULATION`  
+- `TOTAL.REALGSP`  
+- `TOTAL.PRICE`  
+- `TOTAL.SALES`  
+- `PC.REALGSP.STATE`  
+- `POPDEN_URBAN`  
+
+### Model Performance
+The baseline model was evaluated using logistic regression, and its performance was assessed using a train-test split to ensure that results reflect the model's ability to generalize to unseen data. The metrics used to evaluate performance were **accuracy**, **precision**, and **recall**, which help measure overall correctness and the ability to identify severe outages effectively.
+
+- **Accuracy:** 0.70  
+- **Precision:** 0.52  
+- **Recall:** 0.08  
+
+Although the accuracy seems acceptable, the low precision and recall indicate that the model struggles to identify severe outages effectively. This suggests that the baseline model is insufficient for practical use in its current form. However, these results provide a starting point for improvement, and we aim to enhance performance through better feature engineering and hyperparameter tuning.
+
+
 ## Final Model
 ## Fairness Analysis

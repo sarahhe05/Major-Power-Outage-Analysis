@@ -58,7 +58,21 @@ After combining the date and time into single columns, the original columns (`OU
 After these cleaning steps, the dataset now contains consistent datetime columns (`OUTAGE.START` and `OUTAGE.RESTORATION`), and redundant columns were removed. The data is now structured and ready for further analysis to explore the characteristics of major power outages.
 
 
+### Univariate Analysis
 
+<iframe
+  src="assets/duration_distribution_fig.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+<iframe
+  src="assets/severe_region_fig.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 
 
 

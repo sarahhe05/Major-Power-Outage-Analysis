@@ -14,7 +14,6 @@ a {
 
 h1 {
     color: #f8f8f8;
-    font-size: 35px;
 }
 
 h2 {
@@ -61,6 +60,10 @@ footer a {
     color: #f8f8f8;
 }
 
+footer a:hover{
+    color: #f3de89;;
+}
+
 p.copyright.text-muted {
     color: #f8f8f8 !important;
 }
@@ -69,7 +72,15 @@ p.theme-by.text-muted {
     color: #f8f8f8 !important;
 }
 
-a.navbar-custom .navbar-brand{
+nav a {
+    color: #f8f8f8;
+}
+
+a.navbar-custom{
+    color: #f8f8f8 !important;
+}
+
+a.navbar-brand{
     color: #f8f8f8 !important;
 }
 

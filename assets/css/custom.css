@@ -36,6 +36,7 @@ p {
 
 ul li {
     color: #f8f8f8;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 code {
@@ -68,6 +69,10 @@ p.theme-by.text-muted {
     color: #f8f8f8 !important;
 }
 
-p.navbar-brand{
+p.navbar-custom .navbar-brand{
     color: #f8f8f8 !important;
+}
+
+p:hover {
+    color: #f3de89;
 }

@@ -35,6 +35,8 @@ The dataset used for this analysis was obtained from Purdue University's LASCI r
 
 These columns are critical for analyzing the patterns and factors associated with severe power outages. This analysis aims to provide actionable insights that can help stakeholders better prepare for and respond to such events.
 
+---
+
 ## Data Cleaning and Exploratory Data Analysis
 ### Data Cleaning
 The following data cleaning steps were performed to prepare the dataset for analysis. These steps addressed missing values, date and time formatting issues, and redundant columns, ensuring that the data was consistent and usable for further analysis.
@@ -61,7 +63,6 @@ After these cleaning steps, the dataset now contains consistent datetime columns
 
 Below is a preview of the cleaned and filtered outage dataset after selecting only the most relevant columns and performing necessary data cleaning steps. 
 
-<div style="overflow-x: auto; width: 100%;">
 |    |   YEAR |   MONTH | U.S._STATE   | CLIMATE.REGION     | CLIMATE.CATEGORY   | CAUSE.CATEGORY     | CAUSE.CATEGORY.DETAIL   |   OUTAGE.DURATION |   CUSTOMERS.AFFECTED |   TOTAL.CUSTOMERS |   TOTAL.PRICE |   TOTAL.SALES |   TOTAL.REALGSP |   PC.REALGSP.STATE |   POPDEN_URBAN |   POPULATION | OUTAGE.START        | OUTAGE.RESTORATION   | Severe   |
 |---:|-------:|--------:|:-------------|:-------------------|:-------------------|:-------------------|:------------------------|------------------:|---------------------:|------------------:|--------------:|--------------:|----------------:|-------------------:|---------------:|-------------:|:--------------------|:---------------------|:---------|
 |  1 |   2011 |       7 | Minnesota    | East North Central | normal             | severe weather     | nan                     |              3060 |                70000 |       2.5957e+06  |          9.28 |       6562520 |          274182 |              51268 |           2279 |  5.34812e+06 | 2011-07-01 17:00:00 | 2011-07-03 20:00:00  | True     |
@@ -69,7 +70,6 @@ Below is a preview of the cleaned and filtered outage dataset after selecting on
 |  3 |   2010 |      10 | Minnesota    | East North Central | cold               | severe weather     | heavy wind              |              3000 |                70000 |       2.5869e+06  |          8.15 |       5222116 |          267895 |              50447 |           2279 |  5.3109e+06  | 2010-10-26 20:00:00 | 2010-10-28 22:00:00  | True     |
 |  4 |   2012 |       6 | Minnesota    | East North Central | normal             | severe weather     | thunderstorm            |              2550 |                68200 |       2.60681e+06 |          9.19 |       5787064 |          277627 |              51598 |           2279 |  5.38044e+06 | 2012-06-19 04:30:00 | 2012-06-20 23:00:00  | True     |
 |  5 |   2015 |       7 | Minnesota    | East North Central | warm               | severe weather     | nan                     |              1740 |               250000 |       2.67353e+06 |         10.43 |       5970339 |          292023 |              54431 |           2279 |  5.48959e+06 | 2015-07-18 02:00:00 | 2015-07-19 07:00:00  | True     |
-</div>
 
 ### Univariate Analysis
 In this analysis, we focus exclusively on severe power outages, defined as outages lasting longer than 24 hours and affecting over 50,000 people
@@ -117,7 +117,7 @@ The pivot table below shows the mean outage duration for each climate region and
 | Southwest          |                   0 |                    0 |          2544.2  |                            0    |
 | West               |                1914 |                 3100 |          6635.85 |                            0    |
 
-
+---
 ## Assessment of Missingness
 ### NMAR Analysis
 In the subset of columns we selected, the following columns exhibit missing values: `CAUSE.CATEGORY.DETAIL`, `CUSTOMERS.AFFECTED`, `TOTAL.PRICE`, `TOTAL.SALES`, `CLIMATE.REGION`.

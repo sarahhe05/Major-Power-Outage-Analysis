@@ -6,6 +6,8 @@
 
 body {
     background-color: #001b38;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 a {
@@ -14,7 +16,7 @@ a {
 
 h1 {
     color: #f8f8f8;
-    font-size: 40px;
+    font-size: 35px;
 }
 
 h2 {
@@ -38,8 +40,8 @@ ul li {
 }
 
 code {
-    color: #001b38; /* Replace with your desired color */
-    background-color: #f8f8f8; /* Optional: Change background for inline code */
+    color: #001b38;
+    background-color: #f8f8f8;
     padding: 2px 4px;
     border-radius: 4px;
   }
@@ -58,9 +60,14 @@ footer a {
     color: #f8f8f8;
 }
 
-p.text-muted {
+p.copyright.text-muted {
     color: #f8f8f8 !important;
 }
-p.navbar-custom .navbar-brand, .navbar-custom .navbar-nav .nav-link{
+
+p.theme-by.text-muted {
+    color: #f8f8f8 !important;
+}
+
+p.navbar-brand{
     color: #f8f8f8 !important;
 }

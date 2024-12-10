@@ -75,8 +75,8 @@ In this analysis, we focus exclusively on severe power outages, defined as outag
 The Outage Duration Distribution histogram highlights the distribution of severe power outages by their duration. The majority of severe outages last under 5,000 minutes (approximately 3.5 days). However, in an extreme case, one outage lasts over 34,000 minutes (nearly 24 days).
 <iframe
   src="assets/duration_distribution_fig.html"
-  width="600"
-  height="450"
+  width="800"
+  height="500"
   frameborder="0"
 ></iframe>
 
@@ -84,8 +84,8 @@ The Outage Duration Distribution histogram highlights the distribution of severe
 The Severe Outages by Region bar chart displays the distribution of severe power outages across various climate regions, ordered from the highest to the lowest number of occurrences. The data reveals that the Northeast experiences the most severe outages, while the Southwest has the fewest.
 <iframe
   src="assets/severe_region_fig.html"
-  width="600"
-  height="450"
+  width="800"
+  height="500"
   frameborder="0"
 ></iframe>
 
@@ -94,14 +94,15 @@ The Severe Outages by Region bar chart displays the distribution of severe power
 The Number of Customers Affected by Cause Category histogram provides insights into how different causes of power outages impact the number of customers. Some causes affect significantly larger portions of the population than others. For instance, natural disasters like hurricanes and storms are associated with more widespread disruptions, leading to a higher number of affected customers, while technical issues tend to affect fewer people.
 <iframe
   src="assets/customer_cause_count_fig.html"
-  width="600"
-  height="450"
+  width="800"
+  height="500"
   frameborder="0"
 ></iframe>
 
 ### Aggregates
 #### Mean Outage Duration by Region and Cause Category
 The pivot table below shows the mean outage duration for each climate region and cause category in the dataset. It is created by grouping the data based on the climate region and cause of the outage, with the values representing the average outage duration in minutes for each combination.
+{% raw %}
 | CLIMATE.REGION     |   equipment failure |   intentional attack |   severe weather |   system operability disruption |
 |:-------------------|--------------------:|---------------------:|-----------------:|--------------------------------:|
 | Central            |                   0 |                    0 |          5306.14 |                         3137    |
@@ -112,7 +113,7 @@ The pivot table below shows the mean outage duration for each climate region and
 | Southeast          |                   0 |                    0 |          4486.18 |                            0    |
 | Southwest          |                   0 |                    0 |          2544.2  |                            0    |
 | West               |                1914 |                 3100 |          6635.85 |                            0    |
-
+{% endraw %}
 
 ## Assessment of Missingness
 ## Hypothesis Testing

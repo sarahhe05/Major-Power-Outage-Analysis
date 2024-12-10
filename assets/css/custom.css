@@ -69,10 +69,10 @@ p.theme-by.text-muted {
     color: #f8f8f8 !important;
 }
 
-p.navbar-custom .navbar-brand{
+a.navbar-custom .navbar-brand{
     color: #f8f8f8 !important;
 }
 
-p:hover {
+a:hover {
     color: #f3de89;
 }

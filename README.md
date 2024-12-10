@@ -92,7 +92,7 @@ The Severe Outages by Region bar chart displays the distribution of severe power
 ></iframe>
 
 ### Bivariate Analysis
-#### Number of Customer by Cause Category
+#### Number of Customers by Cause Category
 The Number of Customers Affected by Cause Category histogram provides insights into how different causes of power outages impact the number of customers. Some causes affect significantly larger portions of the population than others. For instance, natural disasters like hurricanes and storms are associated with more widespread disruptions, leading to a higher number of affected customers, while technical issues tend to affect fewer people.
 <iframe
   src="assets/customer_cause_count_fig.html"

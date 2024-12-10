@@ -5,7 +5,7 @@
 }
 
 header {
-    background-color: #f3de89;
+    display: none;
 }
 
 body {
@@ -76,10 +76,18 @@ p.theme-by.text-muted {
     color: #f8f8f8 !important;
 }
 
-nav a {
-    color: #f8f8f8;
+a.navbar-custom{
+    color: #f8f8f8 !important;
 }
 
-nav a:hover {
-    color: #f3de89;
+a.navbar-brand{
+    color: #f8f8f8 !important;
+}
+
+a.navbar-custom:hover{
+    color: #f3de89 !important;
+}
+
+a.navbar-brand:hover{
+    color: #f3de89 !important;
 }

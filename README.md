@@ -333,4 +333,4 @@ The permutation test revealed an observed accuracy difference of 0.016 between "
 ## Conclusion
 In this project, we aimed to explore the characteristics of major power outages with higher severity and identify factors that could indicate whether a power outage would be severe. Through steps of exploratory data analysis, feature engineering, model training, and hypothesis testing, we developed a logistic regression model that provides reasonable predictions without significant bias between climate categories. Environmental and infrastructural factors, such as climate conditions, infrastructure type, and historical outage data, were found to correlate with outage severity. By identifying the key factors influencing outage severity, we gained valuable insights that could inform future preparedness and response strategies, helping to mitigate the impact of severe power outages.
 
-<img src="assets/images/footer.png" style="width: 100%; height: auto; display: block; margin-top: 20px;">
+<img src="assets/footer.png" style="width: 100%; height: auto; display: block; margin-top: 20px;">
